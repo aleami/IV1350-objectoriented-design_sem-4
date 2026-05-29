@@ -5,7 +5,7 @@ Seminar 3 – Implementation | Seminar 4 – Exceptions and Design Patterns
 
 ## Project Members
 
-- Alena Arsalan Amir – aaamir@kth.se
+- Aleena Arsalan Amir – aaamir@kth.se
 - Oscar Granath – osgr@kth.se
 - Emilia Lindqvist – emilia4@kth.se
 
