@@ -162,24 +162,28 @@ public class RepairOrder {
                 + "Repair Tasks: " + repairTasks + "\n"
                 + "Diagnostic Results: " + diagnosticResults;
     }
-    
-    private void notifyObservers() {
+
+    private RepairOrderInfoDTO createRepairOrderInfoDTO() {
         List<String> repairTaskInfo = new ArrayList<>();
         for (RepairTask task : repairTasks) {
             repairTaskInfo.add(task.toString());
         }
-        RepairOrderInfoDTO repairOrderInfo = new RepairOrderInfoDTO(
+
+    return new RepairOrderInfoDTO(
             orderID,
             date,
             problemDescr,
             state,
             repairTaskInfo,
             diagnosticResults
-            );
+    );
+}
+    private void notifyObservers() {
+        RepairOrderInfoDTO repairOrderInfo = createRepairOrderInfoDTO();
         for (RepairOrderObserver observer : observers) {
             observer.repairOrderUpdated(repairOrderInfo);
         }
-}
+    }
     
 
 }
