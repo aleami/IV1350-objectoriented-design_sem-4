@@ -1,4 +1,5 @@
 package se.kth.iv1350.repairelectricbike.model;
+import se.kth.iv1350.repairelectricbike.model.dto.RepairOrderInfoDTO;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -162,8 +163,23 @@ public class RepairOrder {
                 + "Diagnostic Results: " + diagnosticResults;
     }
 
+    private RepairOrderInfoDTO createRepairOrderInfoDTO() {
+        List<String> repairTaskInfo = new ArrayList<>();
+        for (RepairTask task : repairTasks) {
+            repairTaskInfo.add(task.toString());
+        }
+
+    return new RepairOrderInfoDTO(
+            orderID,
+            date,
+            problemDescr,
+            state,
+            repairTaskInfo,
+            diagnosticResults
+    );
+}
     private void notifyObservers() {
-        String repairOrderInfo = toString();
+        RepairOrderInfoDTO repairOrderInfo = createRepairOrderInfoDTO();
         for (RepairOrderObserver observer : observers) {
             observer.repairOrderUpdated(repairOrderInfo);
         }
