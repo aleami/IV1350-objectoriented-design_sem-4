@@ -166,7 +166,10 @@ public class RepairOrder {
     private RepairOrderInfoDTO createRepairOrderInfoDTO() {
         List<String> repairTaskInfo = new ArrayList<>();
         for (RepairTask task : repairTasks) {
-            repairTaskInfo.add(task.toString());
+            repairTaskInfo.add(task.getName()
+                    + ", " + task.getDescription()
+                    + ", cost: " + task.getCost()
+                    + ", state: " + task.getState());
         }
 
     return new RepairOrderInfoDTO(
