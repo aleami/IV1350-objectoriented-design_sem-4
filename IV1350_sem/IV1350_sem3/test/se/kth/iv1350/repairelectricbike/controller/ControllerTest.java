@@ -72,25 +72,25 @@ public class ControllerTest {
     @Test
     public void testAcceptRepairOrderChangesStateToAccepted() {
         controller.createRepairOrder("Throttle stuck.", EXISTING_PHONE, 1);
-        int orderId = controller.findAllRepairOrders().get(0).id;
+        int orderId = controller.findAllRepairOrders().get(0).getId();
         controller.acceptRepairOrder(orderId);
-        assertEquals("ACCEPTED", controller.findAllRepairOrders().get(0).state,
+        assertEquals("ACCEPTED", controller.findAllRepairOrders().get(0).getState(),
                 "State should be ACCEPTED after acceptRepairOrder is called.");
     }
 
     @Test
     public void testRejectRepairOrderChangesStateToRejected() {
         controller.createRepairOrder("Display broken.", EXISTING_PHONE, 1);
-        int orderId = controller.findAllRepairOrders().get(0).id;
+        int orderId = controller.findAllRepairOrders().get(0).getId();
         controller.rejectRepairOrder(orderId);
-        assertEquals("REJECTED", controller.findAllRepairOrders().get(0).state,
+        assertEquals("REJECTED", controller.findAllRepairOrders().get(0).getState(),
                 "State should be REJECTED after rejectRepairOrder is called.");
     }
 
     @Test
     public void testAddRepairTaskDoesNotThrow() {
         controller.createRepairOrder("Motor noise.", EXISTING_PHONE, 1);
-        int orderId = controller.findAllRepairOrders().get(0).id;
+        int orderId = controller.findAllRepairOrders().get(0).getId();
         assertDoesNotThrow(() -> controller.addRepairTask(orderId, "Replace motor.", 200.0),
                 "addRepairTask should not throw any exception.");
     }
@@ -98,7 +98,7 @@ public class ControllerTest {
     @Test
     public void testAddDiagnosticResultDoesNotThrow() {
         controller.createRepairOrder("Strange noise.", EXISTING_PHONE, 1);
-        int orderId = controller.findAllRepairOrders().get(0).id;
+        int orderId = controller.findAllRepairOrders().get(0).getId();
         assertDoesNotThrow(() -> controller.addDiagnosticResult(orderId, "Bearing worn."),
                 "addDiagnosticResult should not throw any exception.");
     }
