@@ -25,7 +25,16 @@ public class RepairOrderView implements RepairOrderObserver {
     @Override
     public void repairOrderUpdated(RepairOrderInfoDTO repairOrderInfo) {
         System.out.println("=== Repair Order Updated ===");
-        System.out.println(repairOrderInfo);
+        System.out.println(formatRepairOrderInfo(repairOrderInfo));
         System.out.println("============================");
+    }
+
+    private String formatRepairOrderInfo(RepairOrderInfoDTO repairOrderInfo) {
+        return "Repair Order ID: " + repairOrderInfo.getId() + "\n"
+                + "Date: " + repairOrderInfo.getDate() + "\n"
+                + "Problem: " + repairOrderInfo.getProblemDesc() + "\n"
+                + "State: " + repairOrderInfo.getState() + "\n"
+                + "Repair Tasks: " + repairOrderInfo.getRepairTasks() + "\n"
+                + "Diagnostic Results: " + repairOrderInfo.getDiagnosticResults();
     }
 }
