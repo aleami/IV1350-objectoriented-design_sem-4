@@ -38,8 +38,17 @@ public class RepairOrderLogger implements RepairOrderObserver {
     public void repairOrderUpdated(RepairOrderInfoDTO repairOrderInfo) {
         if (logStream != null) {
             logStream.println("[" + LocalDateTime.now() + "] Repair order updated:");
-            logStream.println(repairOrderInfo);
+            logStream.println(formatRepairOrderInfo(repairOrderInfo));
             logStream.println();
         }
+    }
+
+    private String formatRepairOrderInfo(RepairOrderInfoDTO repairOrderInfo) {
+        return "Repair Order ID: " + repairOrderInfo.getId() + "\n"
+                + "Date: " + repairOrderInfo.getDate() + "\n"
+                + "Problem: " + repairOrderInfo.getProblemDesc() + "\n"
+                + "State: " + repairOrderInfo.getState() + "\n"
+                + "Repair Tasks: " + repairOrderInfo.getRepairTasks() + "\n"
+                + "Diagnostic Results: " + repairOrderInfo.getDiagnosticResults();
     }
 }
