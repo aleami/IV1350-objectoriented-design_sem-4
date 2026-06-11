@@ -106,10 +106,10 @@ public class View {
         List<RepairOrderDTO> orders = controller.findAllRepairOrders();
         for (RepairOrderDTO order : orders) {
             System.out.println(
-                    "   ID: " + order.id
-                    + ", Date: " + order.date
-                    + ", Problem: " + order.problemDesc
-                    + ", State: " + order.state);
+                    "   ID: " + order.getId()
+                    + ", Date: " + order.getDate()
+                    + ", Problem: " + order.getProblemDesc()
+                    + ", State: " + order.getState());
         }
     }
 
