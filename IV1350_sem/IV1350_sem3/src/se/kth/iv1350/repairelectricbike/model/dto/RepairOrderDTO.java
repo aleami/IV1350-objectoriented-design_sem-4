@@ -7,10 +7,10 @@ import java.time.LocalDate;
  */
 public class RepairOrderDTO {
 
-    public final int id;
-    public final LocalDate date;
-    public final String problemDesc;
-    public final String state;
+    private final int id;
+    private final LocalDate date;
+    private final String problemDesc;
+    private final String state;
 
     /**
      * Creates a new RepairOrderDTO.
@@ -25,5 +25,33 @@ public class RepairOrderDTO {
         this.date = date;
         this.problemDesc = problemDesc;
         this.state = state;
+    }
+
+    /**
+     * @return Identifier of the repair order.
+     */
+    public int getId() {
+        return id;
+    }
+
+    /**
+     * @return The date when the repair order was created.
+     */
+    public LocalDate getDate() {
+        return date;
+    }
+
+    /**
+     * @return The description of the problem.
+     */
+    public String getProblemDesc() {
+        return problemDesc;
+    }
+
+    /**
+     * @return The current state of the repair order.
+     */
+    public String getState() {
+        return state;
     }
 }
